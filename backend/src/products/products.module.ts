@@ -1,0 +1,26 @@
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+
+import {
+  Product,
+  ProductSchema,
+} from './products.schema';
+
+import { ProductsController } from './products.controller';
+import { ProductsService } from './products.service';
+import { StorageModule } from '../storage/storage.module';
+
+@Module({
+  imports: [
+    MongooseModule.forFeature([
+      {
+        name: Product.name,
+        schema: ProductSchema,
+      },
+    ]),
+    StorageModule,
+  ],
+  controllers: [ProductsController],
+  providers: [ProductsService],
+})
+export class ProductsModule {}
