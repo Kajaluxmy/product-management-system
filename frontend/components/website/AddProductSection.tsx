@@ -24,7 +24,7 @@ export default function AddProductSection() {
 
       await createProduct(data);
 
-      router.replace('/website/products?status=created');
+      router.replace('/products?status=created');
     } catch (error) {
       setApiError(getErrorMessage(error));
     } finally {
